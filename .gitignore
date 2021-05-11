@@ -1,0 +1,7 @@
+*.o
+a.out.dSYM
+*.swp
+a.out
+libasm/
+nasm
+nasmdir/

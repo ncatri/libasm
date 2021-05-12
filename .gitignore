@@ -2,7 +2,7 @@
 a.out.dSYM
 *.swp
 a.out
-libasm/
+libasm.a
 nasm
 nasmdir/
 intel_manual.pdf

@@ -22,13 +22,13 @@ int main(void)
 
 
 	strlen_test("Hello pals, how you doing?");
+	ft_strcmp("coucou\n", "holi");
 	strlen_test("");
 	strlen_test("1");
 
 	strlen_test("0123456789");
 	strlen_test(big_str);
 
-	ft_strcmp("holi", "coucou");
 }
 
 int	strlen_test(const char *s)

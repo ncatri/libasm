@@ -1,15 +1,17 @@
-NAME = hello
+NAME = libasm.a
 
-SRC = $(NAME).asm
-OBJ = $(SRC:.asm=.o)
+SRC = ft_strlen.s \
+	  ft_strcmp.s
+
+OBJ = $(SRC:.s=.o)
 
 RM = rm -f
 
 $(NAME) : $(OBJ)
-	ld -lSystem $(OBJ) -o $(NAME)
+	ar rcs $(NAME) $?
 
-$(OBJ)	: $(SRC)
-	./nasm -f macho64 -g $(SRC) -o $(OBJ)
+%.o	:	%.s 
+	./nasm -f macho64 -g $< -o $@
 
 clean :
 	$(RM) $(OBJ)

@@ -5,21 +5,41 @@ GLOBAL _ft_strcmp
 SECTION	.text
 
 _ft_strcmp:
-		push	rsi
+
+.loop:	
+		;first, lets do some check if we are at end of string
+		cmp		byte [rdi], 0
+		je		.endofstrings1
+		cmp		byte [rsi], 0
+		je		.endofstrings2
+
+		mov		dl, [rdi]
+		cmp		dl, byte [rsi]
+		jne		.compare
+		inc 	rdi
+		inc 	rsi
+		jmp		.loop
+
+.compare:
+		mov		rax, 2
+		jmp		.finish
+
+.endofstrings1:
+		cmp		byte [rsi], 0
+		je		.setequal
+		mov		rax, -1			;s2 > s1
+		jmp		.finish
+
+.endofstrings2:
+		cmp		byte [rdi], 0
+		je		.setequal
+		mov		rax, 1
+		jmp		.finish
 		
-		call	_ft_strlen
-		mov		rdx, rax		;putting result of ft_strlen in rdx
-		mov		rsi, rdi		;copying first arg of ft_strcmp
-		mov		rdi, 1
-		mov		rax, 0x2000004
-		syscall
+.setequal:
+		mov		rax, 0
+		jmp		.finish
 
-		pop		rdi
-		call	_ft_strlen
-		mov		rdx, rax		;putting result of ft_strlen in rdx
-		mov		rsi, rdi		;copying first arg of ft_strcmp
-		mov		rdi, 1
-		mov		rax, 0x2000004
-		syscall
-
+.finish:
 		ret
+

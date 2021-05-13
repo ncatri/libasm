@@ -7,10 +7,10 @@ _ft_strlen:
 
 iter_char:
 	cmp		byte [rax], 0
-	jz		finish
+	je		.finish
 	inc		rax
 	jmp		iter_char
 
-finish:
+.finish:
 	sub		rax, rdi
 	ret

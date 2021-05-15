@@ -10,7 +10,7 @@ int		ft_strcmp(const char *s1, const char *s2);
 
 int main(void)
 {
-/*	printf(" ======= strlen ======\n");
+	printf(" ======= strlen ======\n");
 	char big_str[BIG_NUM];
 	int i = 0;
 	while (i < BIG_NUM - 1)
@@ -27,16 +27,17 @@ int main(void)
 
 	strlen_test("0123456789");
 	strlen_test(big_str);
-*/
-	char	*s1 = "azc";
-	char	*s2 = "abc";
+
+	printf(" ======= strcmp ======\n");
+	char	*s1 = "abcdefghp";
+	char	*s2 = "abcdefghi";
 	int		retasm;
 	int		retstd;
 
 	retasm = ft_strcmp(s1, s2);
-	printf("%d\n", retasm);
+	printf("retasm: %d\n", retasm);
 	retstd = strcmp(s1, s2);
-	printf("%d\n", retstd); 
+	printf("retstd: %d\n", retstd); 
 
 }
 

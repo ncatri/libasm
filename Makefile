@@ -18,6 +18,8 @@ clean :
 
 fclean : clean
 	$(RM) $(NAME)
+	$(RM) a.out
+	$(RM) -r a.out.dSYM
 
 re:	fclean $(NAME)
 

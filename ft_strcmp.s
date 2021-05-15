@@ -1,45 +1,26 @@
-GLOBAL _ft_strcmp
-
-%include 'ft_strlen.s'
+GLOBAL	_ft_strcmp
 
 SECTION	.text
 
+
 _ft_strcmp:
 
-.loop:	
-		;first, lets do some check if we are at end of string
-		cmp		byte [rdi], 0
-		je		.endofstrings1
-		cmp		byte [rsi], 0
-		je		.endofstrings2
+		push	rcx		; counter register, full 64bit size (also aligns stack??)
+		xor		rcx, rcx		;set counter to zero
 
-		mov		dl, [rdi]
-		cmp		dl, byte [rsi]
-		jne		.compare
-		inc 	rdi
-		inc 	rsi
+.loop:
+		mov		al, byte [rdi + rcx]	;s1[i] written to 1st byte of rax
+		mov		bl, byte [rsi + rcx]	;s2[i] written to 1st byte of rbx
+		cmp		al, 0
+		je		.finish
+		cmp		bl, 0
+		je		.finish
+		cmp		al, bl
+		jne		.finish
+		inc		rcx
 		jmp		.loop
 
-.compare:
-		mov		rax, 2
-		jmp		.finish
-
-.endofstrings1:
-		cmp		byte [rsi], 0
-		je		.setequal
-		mov		rax, -1			;s2 > s1
-		jmp		.finish
-
-.endofstrings2:
-		cmp		byte [rdi], 0
-		je		.setequal
-		mov		rax, 1
-		jmp		.finish
-		
-.setequal:
-		mov		rax, 0
-		jmp		.finish
-
 .finish:
+		sub		rax, rbx				;rax holds the return value
+		pop		rcx		
 		ret
-

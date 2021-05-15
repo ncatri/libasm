@@ -1,7 +1,8 @@
 NAME = libasm.a
 
 SRC = ft_strlen.s \
-	  ft_strcmp.s
+	  ft_strcmp.s \
+	  ft_write.s
 
 OBJ = $(SRC:.s=.o)
 

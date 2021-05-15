@@ -7,3 +7,4 @@ nasm
 nasmdir/
 intel_manual.pdf
 libasmTester
+libasm_test

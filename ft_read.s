@@ -1,12 +1,12 @@
-GLOBAL _ft_write
+GLOBAL _ft_read
 
 ;extern __errno_location 	(Linux)
 extern ___error				;(MacOs)
 
 SECTION .text
 
-_ft_write:
-		mov	rax, 0x2000004
+_ft_read:
+		mov	rax, 0x2000003
 		syscall				; if error at write syscall, CARRY flag is set
 		jc	.error			; and errno value is returned
 		ret

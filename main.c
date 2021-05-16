@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <fcntl.h>
+#include <stdlib.h>
 
 # define BIG_NUM (21473)
 
@@ -20,14 +21,18 @@ int		read_test(void);
 char	*ft_strcpy(char *dst, const char *src);
 int		strcpy_test(void);
 int		strcpy_unittest(char *dst, const char *src);
+char	*ft_strdup(const char *s1);
+int		strdup_test(void);
+int		strdup_unittest(char *sdup, char *str);
 
 int main(void)
 {
-//	strlen_test();
+	strlen_test();
 	strcmp_test();
-//	write_test();
-//	read_test();
-//	strcpy_test();
+	write_test();
+	read_test();
+	strcpy_test();
+	strdup_test();
 }
 
 int	strlen_test(void)
@@ -128,9 +133,31 @@ int	strcpy_test(void)
 
 int	strcpy_unittest(char *dst, const char *src)
 {
-	char *ret = ft_strcpy(dst, src);
+	char *ret = strcpy(dst, src);
 	printf("src: %s, dst: %s\n", dst, src);
 	printf("dst addr: %p, ret addr: %p\n", dst, ret);
 
+	return (1);
+}
+
+int	strdup_test(void)
+{
+	printf(" ======= strdup ======\n");
+
+	char *sdup;
+	sdup = NULL;
+	strdup_unittest(sdup, "coucou");
+	strdup_unittest(sdup, "");
+	strdup_unittest(sdup, "aoighsnvaoiqhrnakhgilqughiauhiqugiauuughn");
+	strdup_unittest(sdup, NULL);
+
+	return (1);
+}
+
+int	strdup_unittest(char *sdup, char *str)
+{
+	sdup = ft_strdup(str);
+	printf("sdup: |%s|\n", sdup);
+	free(sdup);
 	return (1);
 }

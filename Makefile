@@ -19,6 +19,10 @@ $(NAME) : $(OBJ)
 %.o	:	%.s 
 	./nasm -f macho64 -g $< -o $@
 
+test: $(name)
+	clang -Wall -Werror -Wextra -g -L. -lasm main.c
+	./a.out
+
 clean :
 	$(RM) $(OBJ)
 

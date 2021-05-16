@@ -66,6 +66,9 @@ int strcmp_test(void)
 	strcmp_unittest("abcd", "");
 	strcmp_unittest("abcd", "abcd");
 	strcmp_unittest("onjour", "bonjour");
+	strcmp_unittest("\xff\xff", "\xff");
+	strcmp_unittest("\xff\xfe", "\xff");
+	strcmp_unittest("\xfe\xff", "\xfe");
 
 
 	return (1);

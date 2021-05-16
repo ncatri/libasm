@@ -7,9 +7,9 @@ _ft_strcpy:
 		xor	rax, rax			; using rax as the counter
 
 .loop:
-		mov bl, byte [rsi + rax]	;using bl as buffer, bl = dst[i]
-		mov	[rdi + rax], bl			;src[i] = dst [i]
-		cmp bl, 0
+		mov cl, byte [rsi + rax]	;using cl as buffer, cl = dst[i] (bl --> bug)
+		mov	[rdi + rax], cl			;src[i] = dst [i]
+		cmp cl, 0
 		je	.end
 		inc rax
 		jmp .loop
